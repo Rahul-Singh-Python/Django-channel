@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  New User
+{% endblock title %}
+
+{% block content %}
+  <center><h2><i><u>Last Login Admin</u></i></h2></center>           
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Last Login</th>
+      </tr>
+    </thead>
+    <tbody id="new_user">
+      {% include "includes/users.html" %}
+    </tbody>
+  </table>
+{% endblock content %}
+
+<!-- NEW -->
+{% block scripts %}
+	<script src="{% static 'js/channels/reconnecting-websocket.min.js'%}"></script>
+  <script src="{% static 'js/channels/new_user.js' %}"></script>
+{% endblock scripts %}

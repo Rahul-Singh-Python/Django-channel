@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title></title>
+
+<!-- >>>>>>>>>>>>>>>>>>>>>>>>> Searching >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Ending >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+
+
+</head>
+<body>
+	<center><h1>Excel Table</h1></center>
+	<center>
+	Search
+	<input id="myInput" type="text" placeholder="Search...">
+</center><br>
+	<center>
+		<table id="myTable" class="table table-bordered col-sm-3">
+            	{% for row in excel_data %}
+			        <tr>
+			            {% for cell in row %}
+			               <td>{{ cell }}</td>
+			            {% endfor %}
+			        </tr>
+			        {% endfor %}
+           </table>
+	</center>
+</body>
+</html>
